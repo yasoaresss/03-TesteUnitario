@@ -44,8 +44,13 @@ public class Conta
     /// </summary>
     public void Depositar(decimal valor)
     {
-        // TODO: Implemente usando TDD
-        throw new NotImplementedException();
+        if (!Ativa)
+            throw new InvalidOperationException("Não é possível depositar em uma conta encerrada.");
+
+        if (valor <= 0)
+            throw new ArgumentException("O valor do depósito deve ser maior que zero.", nameof(valor));
+
+        Saldo += valor;
     }
 
     /// <summary>
