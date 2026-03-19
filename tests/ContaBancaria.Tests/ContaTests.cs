@@ -206,6 +206,15 @@ public class ContaTests
         Assert.Equal(150, destino.Saldo);
     }
 
+    [Fact]
+    public void Transferir_SaldoInsuficiente_LancaInvalidOperationException()
+    {
+        var origem = new Conta("Maria", 30);
+        var destino = new Conta("João", 100);
+
+        Assert.Throws<InvalidOperationException>(() => origem.Transferir(destino, 50));
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
