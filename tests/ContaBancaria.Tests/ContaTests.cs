@@ -121,6 +121,19 @@ public class ContaTests
         Assert.Throws<InvalidOperationException>(() => conta.Depositar(50));
     }
 
+    [Fact]
+    public void Sacar_ValorValido_AtualizaSaldo()
+    {
+        // Arrange
+        var conta = new Conta("Maria", 200);
+
+        // Act
+        conta.Sacar(80);
+
+        // Assert
+        Assert.Equal(120, conta.Saldo);
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
