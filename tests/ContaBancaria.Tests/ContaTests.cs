@@ -190,6 +190,22 @@ public class ContaTests
 
         Assert.Throws<InvalidOperationException>(() => conta.Encerrar());
     }
+
+    [Fact]
+    public void Transferir_ValorValido_AtualizaSaldoDeAmbasContas()
+    {
+        // Arrange
+        var origem = new Conta("Maria", 200);
+        var destino = new Conta("João", 100);
+
+        // Act
+        origem.Transferir(destino, 50);
+
+        // Assert
+        Assert.Equal(150, origem.Saldo);
+        Assert.Equal(150, destino.Saldo);
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
