@@ -215,6 +215,16 @@ public class ContaTests
         Assert.Throws<InvalidOperationException>(() => origem.Transferir(destino, 50));
     }
 
+    [Fact]
+    public void Transferir_ContaOrigemEncerrada_LancaInvalidOperationException()
+    {
+        var origem = new Conta("Maria", 0);
+        var destino = new Conta("João", 100);
+        origem.Encerrar();
+
+        Assert.Throws<InvalidOperationException>(() => origem.Transferir(destino, 10));
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
