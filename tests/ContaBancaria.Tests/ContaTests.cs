@@ -142,6 +142,14 @@ public class ContaTests
         Assert.Throws<InvalidOperationException>(() => conta.Sacar(100));
     }
 
+    [Fact]
+    public void Sacar_ValorNegativo_LancaArgumentException()
+    {
+        var conta = new Conta("Maria", 200);
+
+        Assert.Throws<ArgumentException>(() => conta.Sacar(-50));
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
