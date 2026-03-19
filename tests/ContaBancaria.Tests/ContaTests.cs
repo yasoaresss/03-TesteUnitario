@@ -112,6 +112,15 @@ public class ContaTests
         Assert.Throws<ArgumentException>(() => conta.Depositar(0));
     }
 
+    [Fact]
+    public void Depositar_ContaEncerrada_LancaInvalidOperationException()
+    {
+        var conta = new Conta("Maria", 0);
+        conta.Encerrar(); // Encerrar ainda não existe — o teste vai falhar
+
+        Assert.Throws<InvalidOperationException>(() => conta.Depositar(50));
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
