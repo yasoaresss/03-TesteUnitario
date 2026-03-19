@@ -96,6 +96,14 @@ public class ContaTests
 
     }
 
+    [Fact]
+    public void Depositar_ValorNegativo_LancaArgumentException()
+    {
+        var conta = new Conta("Maria", 100);
+
+        Assert.Throws<ArgumentException>(() => conta.Depositar(-10));
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
