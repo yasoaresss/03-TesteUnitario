@@ -181,6 +181,15 @@ public class ContaTests
 
         Assert.Throws<InvalidOperationException>(() => conta.Encerrar());
     }
+
+    [Fact]
+    public void Encerrar_ContaJaEncerrada_LancaInvalidOperationException()
+    {
+        var conta = new Conta("Maria", 0);
+        conta.Encerrar();
+
+        Assert.Throws<InvalidOperationException>(() => conta.Encerrar());
+    }
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
