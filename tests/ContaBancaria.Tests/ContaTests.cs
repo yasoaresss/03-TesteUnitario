@@ -150,6 +150,16 @@ public class ContaTests
         Assert.Throws<ArgumentException>(() => conta.Sacar(-50));
     }
 
+    [Fact]
+    public void Sacar_ValorIgualAoSaldo_ZeraSaldo()
+    {
+        var conta = new Conta("Maria", 100);
+
+        conta.Sacar(100);
+
+        Assert.Equal(0, conta.Saldo);
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
