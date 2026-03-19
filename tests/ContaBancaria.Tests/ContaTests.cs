@@ -160,6 +160,19 @@ public class ContaTests
         Assert.Equal(0, conta.Saldo);
     }
 
+    [Fact]
+    public void Encerrar_ContaAtivaComSaldoZero_DesativaAConta()
+    {
+        // Arrange
+        var conta = new Conta("Maria", 0);
+
+        // Act
+        conta.Encerrar();
+
+        // Assert
+        Assert.False(conta.Ativa);
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
