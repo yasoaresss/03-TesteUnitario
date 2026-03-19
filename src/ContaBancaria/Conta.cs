@@ -63,8 +63,16 @@ public class Conta
     /// </summary>
     public void Sacar(decimal valor)
     {
-        // TODO: Implemente usando TDD
-        throw new NotImplementedException();
+        if (!Ativa)
+            throw new InvalidOperationException("Não é possível sacar de uma conta encerrada.");
+
+        if (valor <= 0)
+            throw new ArgumentException("O valor do saque deve ser maior que zero.", nameof(valor));
+
+        if (valor > Saldo)
+            throw new InvalidOperationException("Saldo insuficiente para realizar o saque.");
+
+        Saldo -= valor;
     }
 
     /// <summary>
