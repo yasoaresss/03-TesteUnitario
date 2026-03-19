@@ -82,6 +82,20 @@ public class ContaTests
         Assert.True(conta.Ativa);
     }
 
+    [Fact]
+    public void Depositar_ValorValido_AtualizaSaldo()
+    {
+        // Arrange
+        var conta = new Conta("Maria", 100);
+
+        // Act
+        conta.Depositar(50);
+
+        // Assert
+        Assert.Equal(150, conta.Saldo);
+
+    }
+
     // =======================================================
     //  PARTE 2 — ESCREVA OS TESTES ABAIXO (TDD)
     //  Lembre-se: escreva o teste PRIMEIRO, veja FALHAR (Red),
