@@ -85,8 +85,23 @@ public class Conta
     /// </summary>
     public void Transferir(Conta destino, decimal valor)
     {
-        // TODO: Implemente usando TDD
-        throw new NotImplementedException();
+        if (destino == null)
+            throw new ArgumentNullException(nameof(destino), "A conta de destino não pode ser nula.");
+
+        if (!Ativa)
+            throw new InvalidOperationException("Não é possível transferir de uma conta encerrada.");
+
+        if (!destino.Ativa)
+            throw new InvalidOperationException("Não é possível transferir para uma conta encerrada.");
+
+        if (valor <= 0)
+            throw new ArgumentException("O valor da transferência deve ser maior que zero.", nameof(valor));
+
+        if (valor > Saldo)
+            throw new InvalidOperationException("Saldo insuficiente para realizar a transferência.");
+
+        Saldo -= valor;
+        destino.Saldo += valor;
     }
 
     /// <summary>
